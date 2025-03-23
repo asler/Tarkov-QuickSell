@@ -33,13 +33,13 @@ namespace QuickSell.Patches
         {
             return ClientAppUtils.GetMainApp();
         }
-        private static MainMenuController GetMainMenu()
+        private static MainMenuControllerClass GetMainMenu()
         {
-           return (MainMenuController) typeof(TarkovApplication).GetField("mainMenuController", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(GetApp());
+           return (MainMenuControllerClass) typeof(TarkovApplication).GetField("_menuOperation", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(GetApp());
         }
         private static ISession GetSession()
         {
-            return (ISession)typeof(MainMenuController).GetField("iSession", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(GetMainMenu());
+            return (ISession)typeof(MainMenuControllerClass).GetField("iSession", BindingFlags.Public | BindingFlags.Instance).GetValue(GetMainMenu());
         }
 
         protected override MethodBase GetTargetMethod()
@@ -50,7 +50,7 @@ namespace QuickSell.Patches
         [PatchPrefix]
         private static void Prefix(ItemInfoInteractionsAbstractClass<EItemInfoButton> contextInteractions, IReadOnlyDictionary<EItemInfoButton, string> names, Item item)
         {
-            if (contextInteractions is not GClass3402 gclass) return;
+            if (contextInteractions is not GClass3468 gclass) return;
 
             if (item == null)
             {
@@ -164,9 +164,9 @@ namespace QuickSell.Patches
             {
                 try
                 {
-                    List<GClass2059> list =
+                    List<GClass2102> list =
                     [
-                        new GClass2059 { _tpl = GClass2867.GetCurrencyId(ECurrencyType.RUB), count = Math.Ceiling(result.avg/100.0*Plugin.AvgPricePercent), onlyFunctional = true },
+                        new GClass2102 { _tpl = GClass2934.GetCurrencyId(ECurrencyType.RUB), count = Math.Ceiling(result.avg/100.0*Plugin.AvgPricePercent), onlyFunctional = true },
                     ];
 
                     
@@ -231,7 +231,7 @@ namespace QuickSell.Patches
         }
         private static void forceReloadTraders()
         {        
-            traders = GetSession().Traders.Where(new Func<TraderClass, bool>(MainMenuController.Class1378.class1378_0.method_3)).ToArray<TraderClass>();
+            traders = GetSession().Traders.Where(new Func<TraderClass, bool>(MainMenuControllerClass.Class1394.class1394_0.method_4)).ToArray<TraderClass>();
         }
 
         public static void UIFixesHandler(Action<Item> callback, Item item)
