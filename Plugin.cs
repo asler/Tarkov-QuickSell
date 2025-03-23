@@ -17,7 +17,7 @@ using UIFixesInterop;
 namespace QuickSell
 {
 
-    [BepInPlugin("QuickSell.UniqueGUID", "QuickSell", "2.0.0")]
+    [BepInPlugin("QuickSell.UniqueGUID", "QuickSell", "2.0.2")]
     [BepInDependency("Tyfon.UIFixes", BepInDependency.DependencyFlags.SoftDependency)]
     public class Plugin : BaseUnityPlugin
     {
