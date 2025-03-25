@@ -98,7 +98,7 @@ namespace QuickSell.Patches
                 
                 Utils.SendNotification(string.Format("Profit: {0}", price));
 
-                ITraderInteractions interactions = (ITraderInteractions) typeof(TraderClass).GetField("iTraderInteractions", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(bestTrader);
+                ITraderInteractions interactions = (ITraderInteractions) typeof(TraderClass).GetField("iTraderInteractions", BindingFlags.Public | BindingFlags.Instance).GetValue(bestTrader);
                 interactions.ConfirmSell(bestTrader.Id, [new EFT.Trading.TradingItemReference { Item = item, Count = item.StackObjectsCount }], price, new Callback(PlaySellSound));
 
             }
@@ -194,7 +194,7 @@ namespace QuickSell.Patches
 
             }
 
-            var supplyData_0 = (SupplyData)typeof(TraderClass).GetField("supplyData_0", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(traders.First());
+            var supplyData_0 = (SupplyData)typeof(TraderClass).GetField("supplyData_0", BindingFlags.Public | BindingFlags.Instance).GetValue(traders.First());
             if (supplyData_0 == null)
             {
                 forceReloadTraders();

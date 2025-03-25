@@ -19,7 +19,7 @@ namespace QuickSell.Patches
             if (Plugin.Debug) NotificationManagerClass.DisplayMessageNotification(text, ENotificationDurationType.Long);
         }
 
-        public static void SendError(string text)
+        public static void SendError(string text) 
         {
             NotificationManagerClass.DisplayWarningNotification(text, ENotificationDurationType.Long);
         }

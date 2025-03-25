@@ -17,12 +17,12 @@ using UIFixesInterop;
 namespace QuickSell
 {
 
-    [BepInPlugin("QuickSell.UniqueGUID", "QuickSell", "2.0.2")]
+    [BepInPlugin("QuickSell.UniqueGUID", "QuickSell", "2.0.3")]
     [BepInDependency("Tyfon.UIFixes", BepInDependency.DependencyFlags.SoftDependency)]
     public class Plugin : BaseUnityPlugin
     {
 
-        public static bool EnableQuickSellFlea = true;
+        public static bool EnableQuickSellFlea = true; 
         public static bool EnableQuickSellTraders = true;
 
         public static bool ShowConfirmationDialog = true;
